@@ -72,7 +72,7 @@ function revealOnScroll() {
 // Add reveal class to sections
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll(
-        '.about-container, .skills-grid, .projects-grid, .services-grid, .resume-container, .contact-container'
+        '.about-container, .skills-marquee, .projects-grid, .services-grid, .resume-container, .contact-container'
     );
 
     animateElements.forEach((el, index) => {
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Also add to individual cards for staggered effect
     const cards = document.querySelectorAll(
-        '.skill-card, .project-card, .service-card, .stat-card, .resume-stat-card'
+        '.project-card, .service-card, .stat-card, .resume-stat-card'
     );
 
     cards.forEach((card, index) => {

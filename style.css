@@ -570,12 +570,26 @@ img {
     background: var(--bg-primary);
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-    max-width: 800px;
+.skills-marquee {
+    position: relative;
+    overflow: hidden;
+    max-width: 1000px;
     margin: 0 auto;
+    padding: 4px 0;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.skills-track {
+    --skills-gap-half: 12px;
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    animation: skillsMarquee 28s linear infinite;
+}
+
+.skills-marquee:hover .skills-track {
+    animation-play-state: paused;
 }
 
 .skill-card {
@@ -583,6 +597,8 @@ img {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    flex: 0 0 180px;
+    min-height: 164px;
     padding: 24px 16px;
     background: var(--bg-card);
     border: 1px solid var(--bg-card-border);
@@ -1097,6 +1113,21 @@ img {
     }
 }
 
+@keyframes skillsMarquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-50% - var(--skills-gap-half)));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skills-track {
+        animation: none;
+    }
+}
+
 /* Scroll reveal animation */
 .reveal {
     opacity: 0;
@@ -1141,8 +1172,8 @@ img {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .skills-grid {
-        grid-template-columns: repeat(5, 1fr);
+    .skills-marquee {
+        max-width: 100%;
     }
 
     .projects-grid {
@@ -1254,8 +1285,9 @@ img {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .skill-card {
+        flex-basis: 160px;
+        min-height: 150px;
     }
 
     .projects-grid {
@@ -1308,8 +1340,15 @@ img {
         flex-direction: column;
     }
 
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .skills-track {
+        --skills-gap-half: 8px;
+        gap: 16px;
+        animation-duration: 24s;
+    }
+
+    .skill-card {
+        flex-basis: 140px;
+        min-height: 140px;
     }
 
     .about-stats {
