@@ -635,6 +635,12 @@ img {
     justify-content: center;
 }
 
+.flutter-icon svg {
+    width: 48px;
+    height: 48px;
+    display: block;
+}
+
 .skill-card p {
     font-size: 0.85rem;
     font-weight: 500;
