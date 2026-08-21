@@ -72,7 +72,7 @@ function revealOnScroll() {
 // Add reveal class to sections
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll(
-        '.about-container, .skills-marquee, .projects-grid, .services-grid, .resume-container, .contact-container'
+        '.about-panel, .services-grid, .projects-grid, .impact-band, .process-layout, .testimonial-grid, .contact-banner, .contact-container'
     );
 
     animateElements.forEach((el, index) => {
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Also add to individual cards for staggered effect
     const cards = document.querySelectorAll(
-        '.project-card, .service-card, .stat-card, .resume-stat-card'
+        '.project-card, .service-card, .stat-card, .impact-stat, .testimonial-card'
     );
 
     cards.forEach((card, index) => {
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('scroll', revealOnScroll);
 
 // ===== TYPING EFFECT FOR HERO =====
-const roles = ['Web Developer', 'Laravel Expert', 'Python Developer', 'WordPress Developer'];
+const roles = ['Web Developer', 'Laravel Developer', 'Python Builder', 'WordPress Expert'];
 let roleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
@@ -193,7 +193,7 @@ if (contactForm) {
 
         const mailSubject = subject || `Portfolio inquiry from ${name}`;
         const mailBody = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-        const mailtoUrl = `mailto:rajkiran@example.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+    const mailtoUrl = `mailto:rajkiran@example.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
 
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
@@ -239,18 +239,3 @@ cursorStyle.textContent = `
     }
 `;
 document.head.appendChild(cursorStyle);
-
-// ===== PARALLAX ON HERO IMAGE =====
-document.addEventListener('mousemove', (e) => {
-    const heroImage = document.querySelector('.hero-image-wrapper');
-    if (!heroImage) return;
-
-    const rect = heroImage.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const deltaX = (e.clientX - centerX) / 40;
-    const deltaY = (e.clientY - centerY) / 40;
-
-    heroImage.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-});
