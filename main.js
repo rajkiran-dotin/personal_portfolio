@@ -3,7 +3,6 @@ const navbar = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
-const contactForm = document.getElementById('contactForm');
 
 // ===== NAVBAR SCROLL EFFECT =====
 window.addEventListener('scroll', () => {
@@ -72,7 +71,7 @@ function revealOnScroll() {
 // Add reveal class to sections
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll(
-        '.about-panel, .services-grid, .projects-grid, .impact-band, .process-layout, .testimonial-grid, .contact-banner, .contact-container'
+        '.about-panel, .services-grid, .projects-grid, .impact-band, .process-layout, .testimonial-grid, .contact-container'
     );
 
     animateElements.forEach((el, index) => {
@@ -180,36 +179,6 @@ if (aboutSection) aboutObserver.observe(aboutSection);
 
 const resumeSection = document.getElementById('resume');
 if (resumeSection) aboutObserver.observe(resumeSection);
-
-// ===== CONTACT FORM =====
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById('contactName').value;
-        const email = document.getElementById('contactEmail').value;
-        const subject = document.getElementById('contactSubject').value;
-        const message = document.getElementById('contactMessage').value;
-
-        const mailSubject = subject || `Portfolio inquiry from ${name}`;
-        const mailBody = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-    const mailtoUrl = `mailto:rajkiran@example.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
-
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-envelope-open-text"></i> Opening Email...';
-        submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-        window.location.href = mailtoUrl;
-
-        setTimeout(() => {
-            submitBtn.innerHTML = originalText;
-            submitBtn.style.background = '';
-            contactForm.reset();
-        }, 3000);
-
-        console.log('Form submitted:', { name, email, subject, message });
-    });
-}
 
 // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

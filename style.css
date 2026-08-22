@@ -145,10 +145,6 @@ img {
     padding: 9px 18px;
 }
 
-.btn-full {
-    width: 100%;
-}
-
 .text-link {
     align-items: center;
     color: var(--accent-primary);
@@ -844,100 +840,103 @@ img {
     font-size: 0.82rem;
 }
 
-.contact-banner {
-    align-items: center;
-    background:
-        radial-gradient(circle at 5% 70%, rgba(255, 255, 255, 0.28) 0 24px, transparent 25px),
-        linear-gradient(120deg, #ff776c, #f29a72);
-    border-radius: 22px;
-    color: #fff;
-    display: grid;
-    gap: 24px;
-    grid-template-columns: 0.92fr 1fr auto;
-    margin-bottom: 34px;
-    overflow: hidden;
-    padding: 32px 42px;
-    position: relative;
-}
-
-.contact-banner::after {
-    background: var(--accent-primary);
-    border-radius: 999px;
-    content: "";
-    height: 74px;
-    position: absolute;
-    right: -18px;
-    top: -18px;
-    width: 74px;
-}
-
-.contact-banner .section-subtitle {
-    color: rgba(255, 255, 255, 0.72);
-}
-
-.contact-banner h2 {
-    font-family: var(--font-primary);
-    font-size: clamp(2.2rem, 4vw, 3.6rem);
-    line-height: 0.95;
-}
-
-.contact-banner p {
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 420px;
-}
-
 .contact-container {
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: var(--shadow-card);
     display: grid;
-    gap: 48px;
-    grid-template-columns: 1.08fr 0.72fr;
+    gap: 34px;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.74fr);
+    padding: 34px;
 }
 
-.contact-form {
-    display: grid;
-    gap: 14px;
-    margin-top: 24px;
+.contact-left {
+    align-self: center;
 }
 
-.form-row {
-    display: grid;
-    gap: 14px;
-    grid-template-columns: repeat(2, 1fr);
+.contact-description {
+    color: var(--text-secondary);
+    font-size: 0.96rem;
+    margin: 16px 0 24px;
+    max-width: 560px;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.contact-action {
+    align-items: center;
     background: #fff;
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: 999px;
+    box-shadow: 0 12px 26px rgba(24, 38, 48, 0.06);
     color: var(--text-primary);
-    font: inherit;
-    outline: 0;
-    padding: 14px 16px;
-    transition: var(--transition);
-    width: 100%;
+    display: inline-flex;
+    font-size: 0.84rem;
+    font-weight: 800;
+    gap: 10px;
+    min-height: 46px;
+    padding: 12px 18px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 0 4px rgba(8, 123, 125, 0.08);
+.contact-action i {
+    color: var(--accent-primary);
+    font-size: 1rem;
+    transition: transform 0.25s ease;
 }
 
-.contact-form textarea {
-    min-height: 140px;
-    resize: vertical;
+.contact-action:hover,
+.contact-action:focus-visible {
+    border-color: rgba(8, 123, 125, 0.32);
+    box-shadow: 0 16px 30px rgba(24, 38, 48, 0.1);
+    color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.contact-action:hover i,
+.contact-action:focus-visible i {
+    transform: translateX(2px);
+}
+
+.contact-action:focus-visible,
+.contact-info-item:focus-visible {
+    outline: 3px solid rgba(8, 123, 125, 0.14);
+    outline-offset: 4px;
+}
+
+.whatsapp-action {
+    background: #25d366;
+    border-color: #25d366;
+    color: #fff;
+}
+
+.whatsapp-action i,
+.whatsapp-action:hover,
+.whatsapp-action:focus-visible {
+    color: #fff;
 }
 
 .contact-right {
     align-content: start;
     display: grid;
-    gap: 18px;
+    gap: 12px;
 }
 
 .contact-info-item {
     align-items: flex-start;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     display: flex;
     gap: 14px;
+    min-width: 0;
+    padding: 15px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .contact-info-item > i {
@@ -946,9 +945,16 @@ img {
     border-radius: 999px;
     color: var(--accent-primary);
     display: inline-flex;
+    flex: 0 0 38px;
     height: 38px;
     justify-content: center;
     width: 38px;
+}
+
+.contact-info-item:hover {
+    border-color: rgba(8, 123, 125, 0.22);
+    box-shadow: 0 12px 24px rgba(24, 38, 48, 0.07);
+    transform: translateY(-2px);
 }
 
 .contact-info-item h4 {
@@ -958,24 +964,7 @@ img {
 .contact-info-item p {
     color: var(--text-secondary);
     font-size: 0.84rem;
-}
-
-.contact-socials {
-    display: flex;
-    gap: 10px;
-    padding-top: 8px;
-}
-
-.contact-socials a {
-    align-items: center;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    color: var(--accent-primary);
-    display: inline-flex;
-    height: 38px;
-    justify-content: center;
-    width: 38px;
+    overflow-wrap: anywhere;
 }
 
 .footer {
@@ -1117,7 +1106,6 @@ img {
     .impact-band,
     .process-layout,
     .testimonial-grid,
-    .contact-banner,
     .footer-container {
         grid-template-columns: 1fr 1fr;
     }
@@ -1261,7 +1249,6 @@ img {
     }
 
     .hero-buttons,
-    .form-row,
     .section-heading {
         align-items: stretch;
         flex-direction: column;
@@ -1329,7 +1316,6 @@ img {
     .process-layout,
     .process-steps,
     .testimonial-grid,
-    .contact-banner,
     .footer-container {
         grid-template-columns: 1fr;
     }
@@ -1344,9 +1330,24 @@ img {
         border-bottom: 0;
     }
 
-    .impact-band,
-    .contact-banner {
+    .impact-band {
         padding: 26px 22px;
+    }
+
+    .contact-container {
+        gap: 26px;
+        padding: 24px 18px;
+    }
+
+    .contact-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .contact-action {
+        justify-content: center;
+        min-height: 48px;
+        width: 100%;
     }
 
     .impact-stat {
@@ -1428,10 +1429,6 @@ img {
     .service-card {
         min-height: 190px;
         padding: 22px 18px 18px;
-    }
-
-    .contact-banner h2 {
-        font-size: 2rem;
     }
 
     .skill-bars div {
